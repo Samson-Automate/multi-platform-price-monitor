@@ -1,2 +1,75 @@
-# multi-platform-price-monitor
-Automated Python scripting tool that monitors e-commerce competitor pricing and triggers instant live notifications via Discord Webhooks.
+# 🛒 Multi-Platform Competitor Price Monitor & Alert System
+
+A production-ready, automated Python scripting tool built to track competitor pricing changes in real-time. The system automatically extracts live pricing logs history in a local SQLite database, and fires instant notifications via Discord Webhooks when a price drop is detected.
+
+---
+
+## 🔥 Key Features
+
+* **Automated Web Scraping:** Extracts dynamic pricing data securely from target product pages.
+* **Smart Alert Engine:** Evaluates live data against history logs to identify price reductions immediately.
+* **Instant Discord Integration:** Pushes real-time, clean markdown embedded alerts to your Discord channel.
+* **Lightweight Local Storage:** Utilizes a lightweight SQLite3 database to maintain comprehensive pricing history records.
+* **Continuous Automation:** Operational 24/7 via an internal python scheduling background worker.
+* **Secure Environment:** Zero hardcoded credentials. Managed cleanly via an external `config.json` file.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Language:** Python 3.8+
+* **Libraries:** BeautifulSoup4, Requests, Schedule
+* **Database:** SQLite3 (Built-in)
+* **Integration:** Discord Webhooks API
+
+---
+
+## 📂 Repository File Structure
+
+```text
+├── config.json          # Credentials and target URLs configuration
+├── requirements.txt     # Python environment external dependencies
+└── scraper_alert.py     # Main background automation controller engine
+```
+
+---
+
+## 🚀 Quick Start Guide
+
+### 1. Installation
+Clone or download the project files to your local directory.
+
+### 2. Dependencies Setup
+Run the environment configuration installation command in your terminal:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Update Configuration
+Configure your credentials in the `config.json` file:
+```json
+{
+    "discord_webhook_url": "YOUR_DISCORD_WEBHOOK_URL",
+    "check_interval_minutes": 60,
+    "products_to_track": [
+        {
+            "name": "Sony Headphones",
+            "url": "https://ebay.com"
+        }
+    ]
+}
+```
+
+### 4. Initialize Tracker
+Launch the script execution sequence inside the terminal:
+```bash
+python scraper_alert.py
+```
+
+---
+
+## 📈 Business & Freelance Value
+
+* **Automated Overhead reduction:** Saves hours of daily manual auditing operations.
+* **Competitive Edge:** Enables e-commerce store operators to react dynamically to pricing shifts.
+* **Lightweight Deployment:** Runs entirely in the background without needing heavy browser tools.
