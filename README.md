@@ -77,3 +77,10 @@ If you are looking to integrate custom web scrapers, data pipelines, or workflow
 * Email: samsonpatras34@gmail.com
 * X (Twitter): [Twitter/X Profile](https://x.com/Samson_Automate/)
 * Discord: `samson005473`
+
+Need help deploying this script or want a custom automation solution built for your specific business requirements? Let's connect and discuss your project.
+
+Thanks and Best Regards,
+Samson
+
+
