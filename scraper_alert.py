@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import schedule
 
+# Logging configurations for clean and professional terminal outputs
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -17,6 +18,7 @@ logging.basicConfig(
 DB_NAME = "price_history.db"
 
 def init_database():
+    """Initializes the local SQLite database and generates the price logs table."""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("""
@@ -33,14 +35,17 @@ def init_database():
     logging.info("Database initialized successfully.")
 
 def get_last_price(product_url):
+    """Fetches the last recorded price from the database and unpacks the tuple data."""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT price FROM prices WHERE url = ? ORDER BY id DESC LIMIT 1", (product_url,))
     row = cursor.fetchone()
     conn.close()
-    return row if row else None
+    # Fixed tuple index error by returning the float value directly [row[0]]
+    return row[0] if row else None
 
 def save_new_price(product_name, url, price):
+    """Logs the newly extracted price along with a precise timestamp entry."""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute(
@@ -51,6 +56,7 @@ def save_new_price(product_name, url, price):
     conn.close()
 
 def send_discord_alert(webhook_url, message):
+    """Dispatches markdown embedded automated notifications directly to the Discord channel."""
     payload = {"content": message}
     try:
         response = requests.post(webhook_url, json=payload, timeout=10)
@@ -62,6 +68,7 @@ def send_discord_alert(webhook_url, message):
         logging.error(f"Error sending Discord alert: {e}")
 
 def scrape_ebay_price(url):
+    """Scrapes dynamic target pages and extracts current pricing elements cleanly."""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept-Language": "en-US,en;q=0.9"
@@ -82,6 +89,7 @@ def scrape_ebay_price(url):
         return None
 
 def monitor_job():
+    """Main business logic flow that automates price extraction, evaluation, and logging."""
     logging.info("Starting automation check cycle...")
     if not os.path.exists("config.json"):
         logging.error("config.json file missing!")
@@ -108,6 +116,7 @@ def monitor_job():
             logging.info(f"First log for {name}. Price: ${current_price}")
             save_new_price(name, url, current_price)
         elif current_price < last_price:
+            # Price drop tracking condition restored to real production logic
             msg = f"🚨 **PRICE DROP ALERT!** 🚨\n\n📦 **Product:** {name}\n📉 **Old Price:** ${last_price}\n🔥 **New Price:** ${current_price}\n🔗 **Link:** {url}"
             send_discord_alert(webhook_url, msg)
             save_new_price(name, url, current_price)
