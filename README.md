@@ -30,7 +30,7 @@ A production-ready, automated Python scripting tool built to track competitor pr
 
 Below is the live execution log showcasing successful database initialization and the automation engine transition into background monitoring state:
 
-![Terminal Execution Logs](terminal_output.png)
+<img width="968" height="158" alt="terminal_output png" src="https://github.com/user-attachments/assets/3924064b-fcee-498d-ad74-dceb139f0136" />
 
 ## Quick Start Guide
 
