@@ -1,0 +1,10 @@
+{
+    "discord_webhook_url": "YOUR_DISCORD_WEBHOOK_URL",
+    "check_interval_minutes": 60,
+    "products_to_track": [
+        {
+            "name": "Sony Headphones",
+            "url": "https://ebay.com"
+        }
+    ]
+}
