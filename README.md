@@ -74,6 +74,6 @@ python scraper_alert.py
 
 If you are looking to integrate custom web scrapers, data pipelines, or workflow automation tools for your business, feel free to reach out:
 
-* Email: samson.automate@gmail.com
+* Email: samsonpatras34@gmail.com
 * X (Twitter): [Twitter/X Profile](https://x.com/Samson_Automate/)
 * Discord: `samson005473`
