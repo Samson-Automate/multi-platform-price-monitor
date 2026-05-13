@@ -28,7 +28,7 @@ A production-ready, automated Python scripting tool built to track competitor pr
 
 ## Terminal Execution Preview
 
-Below is the live execution log showcasing successful database initialization and the automation engine transition into background monitoring state:
+Below is the live execution log showcasing a successful live data check loop, precise database synchronization, and instant Discord notification dispatch sequence:
 
 <img width="968" height="158" alt="terminal_output png" src="https://github.com/user-attachments/assets/3924064b-fcee-498d-ad74-dceb139f0136" />
 
@@ -82,5 +82,3 @@ Need help deploying this script or want a custom automation solution built for y
 
 Thanks and Best Regards,
 Samson
-
-
