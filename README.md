@@ -44,7 +44,13 @@ pip install -r requirements.txt
 ```
 
 ### 3. Update Configuration
-Configure your credentials in the config.json file:
+Open the `config.json` file in any text editor (like Notepad) and replace the dummy placeholder values with your actual system credentials:
+
+* Replace `"YOUR_DISCORD_WEBHOOK_URL"` with the active webhook link generated from your Discord channel settings.
+* Replace the placeholder `"url"` with the specific target e-commerce product link you want to track.
+
+Your finalized `config.json` structure should look like this:
+
 ```json
 {
     "discord_webhook_url": "YOUR_DISCORD_WEBHOOK_URL",
@@ -57,6 +63,7 @@ Configure your credentials in the config.json file:
     ]
 }
 ```
+*Note: Make sure to keep the double quotes `""` intact around your real links while pasting.*
 
 ### 4. Initialize Tracker
 Launch the script execution sequence inside the terminal:
